@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../sources/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-25">
+                <label>Аудиокодек речи (опционально):</label>
+            </div>
+            <div class="col-75">
+                <select id="codec">
+                    <option disabled>Выберите аудиокодек</option>
+                    <option selected value="MP3">MP3</option>
+                    <option value="WAV">WAV</option>
+                    <option value="AAC">AAC</option>
+                    <option value="OGG">OGG</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Текстовый контент для преобразования в речь (обязательно):</label>
+            </div>
+            <div class="col-75">
+                <textarea id="text" required placeholder="Напишите что-нибудь.." style="height:200px"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Язык текстового контента (обязательно):</label>
+            </div>
+            <div class="col-75">
+                <select id="language" required>
+                    <option disabled>Выберите язык</option>
+                    <option value="en-us">Английский (Соединенные Штаты)</option>
+                    <option selected value="ru-ru">Русский</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="fname">Скорость речи (опционально):</label>
+            </div>
+            <div class="col-75">
+                <input type="number" id="speed" required min="-10" max="10" value="0">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Форматы речевого аудио (опционально):</label>
+            </div>
+            <div class="col-75">
+                <select id="format">
+                    <option disabled>Выберите формат</option>
+                    <option value="8khz_8bit_mono">8 kHz, 8 Bit, Mono</option>
+                    <option value="8khz_8bit_stereo">8 kHz, 8 Bit, Stereo</option>
+                    <option value="8khz_16bit_mono">8 kHz, 16 Bit, Mono</option>
+                    <option value="8khz_16bit_stereo">8 kHz, 16 Bit, Stereo</option>
+                    <option value="11khz_8bit_mono">11 kHz, 8 Bit, Mono</option>
+                    <option value="11khz_8bit_stereo">11 kHz, 8 Bit, Stereo</option>
+                    <option value="11khz_16bit_mono">11 kHz, 16 Bit, Mono</option>
+                    <option value="11khz_16bit_stereo">11 kHz, 16 Bit, Stereo</option>
+                    <option value="12khz_8bit_mono">12 kHz, 8 Bit, Mono</option>
+                    <option value="12khz_8bit_stereo">12 kHz, 8 Bit, Stereo</option>
+                    <option value="12khz_16bit_mono">12 kHz, 16 Bit, Mono</option>
+                    <option value="12khz_16bit_stereo">12 kHz, 16 Bit, Stereo</option>
+                    <option value="16khz_8bit_mono">16 kHz, 8 Bit, Mono</option>
+                    <option value="16khz_8bit_stereo">16 kHz, 8 Bit, Stereo</option>
+                    <option value="16khz_16bit_mono">16 kHz, 16 Bit, Mono</option>
+                    <option value="16khz_16bit_stereo">16 kHz, 16 Bit, Stereo</option>
+                    <option value="22khz_8bit_mono">22 kHz, 8 Bit, Mono</option>
+                    <option value="22khz_8bit_stereo">22 kHz, 8 Bit, Stereo</option>
+                    <option value="22khz_16bit_mono">22 kHz, 16 Bit, Mono</option>
+                    <option value="22khz_16bit_stereo">22 kHz, 16 Bit, Stereo</option>
+                    <option value="24khz_8bit_mono">24 kHz, 8 Bit, Mono</option>
+                    <option value="24khz_8bit_stereo">24 kHz, 8 Bit, Stereo</option>
+                    <option value="24khz_16bit_mono">24 kHz, 16 Bit, Mono</option>
+                    <option value="24khz_16bit_stereo">24 kHz, 16 Bit, Stereo</option>
+                    <option value="32khz_8bit_mono">32 kHz, 8 Bit, Mono</option>
+                    <option value="32khz_8bit_stereo">32 kHz, 8 Bit, Stereo</option>
+                    <option value="32khz_16bit_mono">32 kHz, 16 Bit, Mono</option>
+                    <option value="32khz_16bit_stereo">32 kHz, 16 Bit, Stereo</option>
+                    <option value="44khz_8bit_mono">44 kHz, 8 Bit, Mono</option>
+                    <option value="44khz_8bit_stereo">44 kHz, 8 Bit, Stereo</option>
+                    <option value="44khz_16bit_mono">44 kHz, 16 Bit, Mono</option>
+                    <option value="44khz_16bit_stereo">44 kHz, 16 Bit, Stereo</option>
+                    <option value="48khz_8bit_mono">48 kHz, 8 Bit, Mono</option>
+                    <option value="48khz_8bit_stereo">48 kHz, 8 Bit, Stereo</option>
+                    <option value="48khz_16bit_mono">48 kHz, 16 Bit, Mono</option>
+                    <option selected value="48khz_16bit_stereo">48 kHz, 16 Bit, Stereo</option>
+                    <option value="alaw_8khz_mono">ALaw, 8 kHz, Mono</option>
+                    <option value="alaw_8khz_stereo">ALaw, 8 kHz, Stereo</option>
+                    <option value="alaw_11khz_mono">ALaw, 11 kHz, Mono</option>
+                    <option value="alaw_11khz_stereo">ALaw, 11 kHz, Stereo</option>
+                    <option value="alaw_22khz_mono">ALaw, 22 kHz, Mono</option>
+                    <option value="alaw_22khz_stereo">ALaw, 22 kHz, Stereo</option>
+                    <option value="alaw_44khz_mono">ALaw, 44 kHz, Mono</option>
+                    <option value="alaw_44khz_stereo">ALaw, 44 kHz, Stereo</option>
+                    <option value="ulaw_8khz_mono">uLaw, 8 kHz, Mono</option>
+                    <option value="ulaw_8khz_stereo">uLaw, 8 kHz, Stereo</option>
+                    <option value="ulaw_11khz_mono">uLaw, 11 kHz, Mono</option>
+                    <option value="ulaw_11khz_stereo">uLaw, 11 kHz, Stereo</option>
+                    <option value="ulaw_22khz_mono">uLaw, 22 kHz, Mono</option>
+                    <option value="ulaw_22khz_stereo">uLaw, 22 kHz, Stereo</option>
+                    <option value="ulaw_44khz_mono">uLaw, 44 kHz, Mono</option>
+                    <option value="ulaw_44khz_stereo">uLaw, 44 kHz, Stereo</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <p><button class="button" id="enter">Запросить</button></p>
+        </div>
+        </div>
+    <div class="result">
+        <audio controls src="" id="audio">
+            "Your browser does not support the"
+            <code>audio</code>
+            " element."
+        </audio>
+    </div>
+</body>
+<script src="../sources/newScript.js"></script>
+</html> 
